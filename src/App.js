@@ -1,12 +1,17 @@
 import React from 'react';
-import {CatFactsProvider} from './store/hooks/catfactsContext';
+import {CatFactsProvider} from './hooks/catfactsContext';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import MainComponent from './components/MainComponent';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <CatFactsProvider>
-      <MainComponent />
-    </CatFactsProvider>
+    <QueryClientProvider client={queryClient}>
+      <CatFactsProvider>
+        <MainComponent />
+      </CatFactsProvider>
+    </QueryClientProvider>
   );
 };
 

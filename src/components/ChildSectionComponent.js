@@ -1,19 +1,21 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {handleFetch} from '../data/api';
-import {useCatFacts} from '../store/hooks/catfactsContext';
+import {useQueryClient} from '@tanstack/react-query';
+import {useCatFacts} from '../hooks/catfactsContext';
 
 const ChildSectionComponent = () => {
-  const {state, dispatch} = useCatFacts();
-  const {fact} = state;
+  const {data} = useCatFacts();
+  const queryClient = useQueryClient();
 
-  const fetchData = () => {
-    handleFetch(dispatch);
+  const fetchData = async () => {
+    await handleFetch();
+    queryClient.invalidateQueries(['catFacts']);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{fact}</Text>
+      <Text style={styles.text}>{data.fact}</Text>
       <TouchableOpacity style={styles.button} onPress={fetchData}>
         <Text style={styles.buttonText}>Fetch Again</Text>
       </TouchableOpacity>

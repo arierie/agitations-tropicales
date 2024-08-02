@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useCatFacts} from '../store/hooks/catfactsContext';
+import {useCatFacts} from '../hooks/catfactsContext';
 import ChildComponent from './ChildComponent';
 
 const MainComponent = () => {
-  const {state} = useCatFacts();
-  const {fact, length, isLoading, error} = state;
+  const {data, error, isLoading} = useCatFacts();
+
+  console.log(data);
 
   if (isLoading) {
     return <Text>Loading cat fact...</Text>;
@@ -15,11 +16,15 @@ const MainComponent = () => {
     return <Text>Error fetching cat fact: {error.message}</Text>;
   }
 
+  if (!data || typeof data !== 'object') {
+    return <Text>No cat facts available</Text>;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>{fact}</Text>
+      <Text style={styles.heading}>{data.fact}</Text>
       <ChildComponent />
-      <Text style={styles.body}>length: {length}</Text>
+      <Text style={styles.body}>length: {data.length}</Text>
     </View>
   );
 };

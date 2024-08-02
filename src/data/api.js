@@ -1,16 +1,10 @@
 import axios from 'axios';
 
-export const fetchData = async () => {
+export const handleFetch = async () => {
   const response = await axios.get('https://catfact.ninja/fact');
-  return response.data;
-};
-
-export const handleFetch = async dispatch => {
-  dispatch({type: 'FETCH_FACTS_REQUEST'});
-  try {
-    const data = await fetchData();
-    dispatch({type: 'FETCH_FACTS_SUCCESS', payload: data});
-  } catch (error) {
-    dispatch({type: 'FETCH_FACTS_FAILURE', payload: error});
+  if (response.status !== 200) {
+    console.log(response);
+    throw new Error('Network response was not ok');
   }
+  return response.data;
 };

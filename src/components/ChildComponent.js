@@ -1,15 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useCatFacts} from '../store/hooks/catfactsContext';
+import {useCatFacts} from '../hooks/catfactsContext';
 import ChildSectionComponent from './ChildSectionComponent';
 
 const ChildComponent = () => {
-  const {state} = useCatFacts();
-  const {fact} = state;
+  const {data} = useCatFacts();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{fact}</Text>
+      <Text style={styles.text}>{data.fact}</Text>
       <ChildSectionComponent />
     </View>
   );
