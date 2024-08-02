@@ -1,21 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {fetchFacts} from '../store/actions/fetchCats';
+import {handleFetch} from '../data/api';
+import {useCatFacts} from '../store/hooks/catfactsContext';
 
 const ChildSectionComponent = () => {
-  const {fact} = useSelector(state => state);
+  const {state, dispatch} = useCatFacts();
+  const {fact} = state;
 
-  const dispatch = useDispatch();
-
-  const handleFetch = () => {
-    dispatch(fetchFacts());
+  const fetchData = () => {
+    handleFetch(dispatch);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{fact}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleFetch}>
+      <TouchableOpacity style={styles.button} onPress={fetchData}>
         <Text style={styles.buttonText}>Fetch Again</Text>
       </TouchableOpacity>
     </View>

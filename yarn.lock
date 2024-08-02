@@ -2634,6 +2634,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.51.17":
+  version: 5.51.17
+  resolution: "@tanstack/query-core@npm:5.51.17"
+  checksum: 86db47b566a7f3a4e24fb47143258faca07e803f486e2942d73792f00e7d4e3f8b29a45570a7c1f1139d3f139de3f66a76e62ed568411c969c4cf7fe604fcf37
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.51.18":
+  version: 5.51.18
+  resolution: "@tanstack/react-query@npm:5.51.18"
+  dependencies:
+    "@tanstack/query-core": 5.51.17
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 6c37ef17bdd52b517a2d9252de86f9746d18b5177bad8d672cc9b10a8ed99e3f3543f3bcb6d779c9044e4402f34a2bc2254aeee206fb02b76c8a5a2b75c3345d
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -3014,6 +3032,7 @@ __metadata:
     "@react-native/eslint-config": 0.74.85
     "@react-native/metro-config": 0.74.85
     "@react-native/typescript-config": 0.74.85
+    "@tanstack/react-query": ^5.51.18
     "@types/react": ^18.2.6
     "@types/react-test-renderer": ^18.0.0
     axios: ^1.7.2

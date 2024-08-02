@@ -1,13 +1,12 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import store from './store';
+import {CatFactsProvider} from './store/hooks/catfactsContext';
 import MainComponent from './components/MainComponent';
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <CatFactsProvider>
       <MainComponent />
-    </Provider>
+    </CatFactsProvider>
   );
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useCatFacts} from '../store/hooks/catfactsContext';
 import ChildSectionComponent from './ChildSectionComponent';
 
 const ChildComponent = () => {
-  const {fact} = useSelector(state => state);
+  const {state} = useCatFacts();
+  const {fact} = state;
 
   return (
     <View style={styles.container}>

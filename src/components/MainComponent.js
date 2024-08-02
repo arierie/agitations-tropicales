@@ -1,19 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {fetchFacts} from '../store/actions/fetchCats';
-import {useSelector, useDispatch} from 'react-redux';
+import {useCatFacts} from '../store/hooks/catfactsContext';
 import ChildComponent from './ChildComponent';
 
 const MainComponent = () => {
-  const {fact, length, isLoading, error} = useSelector(state => state);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchFacts());
-  }, [dispatch]);
-
-  console.log('fact:', fact);
+  const {state} = useCatFacts();
+  const {fact, length, isLoading, error} = state;
 
   if (isLoading) {
     return <Text>Loading cat fact...</Text>;
